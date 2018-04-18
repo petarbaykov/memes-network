@@ -17,12 +17,15 @@
         </p>
         <p>
             <button id="generate-btn">Generate!</button>
+
+             <button id="save" onclick="meme.save()">SAVE!</button>
         </p>
         <p>
-            <canvas id="meme-canvas" title="Right click -> &quot;Save image as...&quot;"></canvas>
+            <canvas id="meme-canvas" style="display:none;" title="Right click -> &quot;Save image as...&quot;"></canvas>
         </p>
+        <img id="result" src="">
         </div>
     </div>
     
-
+<script src="{{ asset('js/memegenerator.js') }}"></script>
 @endsection

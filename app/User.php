@@ -26,4 +26,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function friends(){
+
+        return $this->belongsTo('App\Friends','friends_2_id');
+    }
 }

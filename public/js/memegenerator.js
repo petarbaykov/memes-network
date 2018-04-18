@@ -1,4 +1,4 @@
-let topTextInput, bottomTextInput, topTextSizeInput, bottomTextSizeInput, imageInput, generateBtn, canvas, ctx;
+let topTextInput, bottomTextInput, topTextSizeInput, bottomTextSizeInput, imageInput, generateBtn, canvas, ctx , dataUrl;
 
 function generateMeme (img, topText, bottomText, topTextSize, bottomTextSize) {
     let fontSize;
@@ -40,6 +40,8 @@ function generateMeme (img, topText, bottomText, topTextSize, bottomTextSize) {
         ctx.fillText(t, canvas.width / 2, canvas.height - i * fontSize, canvas.width);
         ctx.strokeText(t, canvas.width / 2, canvas.height - i * fontSize, canvas.width);
     });
+    dataUrl = canvas.toDataURL();
+    document.getElementById("result").src = dataUrl;
 }
 
 function init () {
@@ -73,3 +75,18 @@ function init () {
 }
 
 init();
+
+var meme = {
+    save:function(){
+        $.ajaxSetup({
+       headers: {
+           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+       }
+       });
+        $.post(baseUrl+'save-meme',{img:dataUrl})
+        .done(function(){
+
+        });
+    }
+
+}

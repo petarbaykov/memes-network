@@ -11,72 +11,82 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
+    <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+     <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
+     <script>
+        var baseUrl = "<?php echo asset('/'); ?>";
+     </script>
 </head>
-<body>
+<body @if( (isset($page) && $page == "home") || isset($isAuth )) class="bodyBg" @endif>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        @if(!isset($isAuth))
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top ">
             <div class="container">
-                <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+          <a class="navbar-brand" href="{{asset('/')}}">Laravel Blog</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav  ml-auto">
+              @guest
+                 <li class="nav-item active">
+                    <a class="nav-link" href="{{ route('login') }}">Вход <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="{{ route('register') }}">Регистрация <span class="sr-only">(current)</span></a>
+                  </li>
+            @else
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="fa fa-bell"></span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    @foreach($friends_requests as $request)
+                      {{$request->name}}
+                    @endforeach
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   {{ Auth::user()->name }}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  
+                     <a  class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                        Изход
                     </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                  
                 </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li><a href="{{ asset('new-meme') }}">New meme</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
+              </li>
+              @endif
+            </ul>
+          </div>
+        </div>
         </nav>
-
-        @yield('content')
+        @endif
+            @yield('content')
+       
+       
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/memegenerator.js') }}"></script>
+
+     <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+     <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+      
+     
+     <script>
+         
+
+     </script>
+      
 </body>
 </html>
