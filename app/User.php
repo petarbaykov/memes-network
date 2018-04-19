@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use DB;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -27,8 +27,30 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function friends(){
+    public function followers(){
 
-        return $this->belongsTo('App\Friends','friends_2_id');
+        return $this->belongsToMany('App\User','followers','follow_id','user_id');
+    }
+
+    public function followings(){
+        return $this->belongsToMany('App\User','followers','user_id','follow_id');
+    }
+
+    public function getLikedMemes(){
+        return DB::table('likes')->where('user_id',$this->id)->get();
+    }
+    public function countFollowers(){
+        return DB::table('followers')->where('follow_id',$this->id)->count();
+    }
+    public function countFollowing(){
+        return DB::table('followers')->where('user_id',$this->id)->count();
+    }
+    public function isMemeLiked($meme_id){
+        foreach($this->getLikedMemes() as $liked){
+            if($liked->meme_id == $meme_id){
+                return true;
+            }
+        }
+        return false;
     }
 }

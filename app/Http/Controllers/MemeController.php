@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\BaseController;
 use App\Memes;
 use Auth;
+use DB;
 class MemeController extends BaseController
 {
     public function new(){
@@ -27,5 +28,15 @@ class MemeController extends BaseController
         $meme->image = $fileName;
         $meme->time = time();
         $meme->save();
+    }
+
+    public function like(Request $request){
+
+        $data = $request->all();
+        DB::table('likes')->insert([
+            'meme_id'=>$data['meme_id'],
+            'user_id'=>Auth::user()->id,
+            'time'=>time()
+        ]);
     }
 }

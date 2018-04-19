@@ -13,6 +13,7 @@ body{
   box-sizing:border-box;
   box-shadow:0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
   margin:15px 0;
+  padding-bottom:0;
 }
 .singleMeme img{
   width:100%;
@@ -21,4 +22,43 @@ body{
 }
 #navbarNavDropdown.navbar-collapse{
 
+}
+.memeBar{
+ margin:2px 0;
+  box-sizing: border-box;
+  display: inline-block;
+}
+.like{
+  cursor: pointer;
+  padding:10px 25px;
+  
+}
+.like:hover{
+  background:#eaeaea;
+   
+}
+.liked{
+  color:#007bff;
+}
+#profilePicture{
+  width:200px;
+  height:200px;
+  border-radius: 50%;
+
+  background-size:cover;
+  margin:0 auto;
+}
+.bioRow{
+  padding:15px;
+  margin:20px 0;
+}
+.user_name{
+  font-size:1.5rem;
+  font-weight: bold;
+}
+.profileImage{
+  text-align: center;
+}
+#uploadAvatar{
+  display: none;
 }

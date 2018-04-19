@@ -43,9 +43,7 @@
                     <span class="fa fa-bell"></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    @foreach($friends_requests as $request)
-                      {{$request->name}}
-                    @endforeach
+                   
                 </div>
               </li>
               <li class="nav-item dropdown">
@@ -79,9 +77,10 @@
     <!-- Scripts -->
 
      <script src="{{ asset('js/jquery.min.js') }}"></script>
+      <script src="{{ asset('js/requester.js') }}"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
      <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
-      
+       <script src="{{ asset('js/main.js') }}"></script>
      
      <script>
          

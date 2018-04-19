@@ -8,9 +8,7 @@
             </div>
             <div class="mainContent">
                  @foreach($memes as $meme)
-                    <div class="singleMeme">
-                        <img src="{{ asset('memes').'/'.$meme->image }}">
-                    </div>
+                    @include('templates.memes')
                 @endforeach
             </div>
             <div class="">

@@ -16,7 +16,7 @@ class HomeController extends BaseController
     public function __construct()
     {
         parent::__construct();
-        $this->middleware('auth');
+        
     }
 
     /**
@@ -26,7 +26,10 @@ class HomeController extends BaseController
      */
     public function index()
     {
-        $memes = Memes::where('user_id',Auth::user()->id)->orderBy('id','desc')->get();
+        $memes = Memes::orderBy('memes.id','desc')
+            ->select('memes.*')
+            
+            ->get();
 
         
         

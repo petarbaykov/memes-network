@@ -11,14 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',  'HomeController@index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('new-meme','MemeController@new');
 Route::post('save-meme','MemeController@save');
 Route::get('friend-suggests','FriendsController@suggests');
 Route::get('invite/{id}','FriendsController@invite');
+
+Route::post('like','MemeController@like');
+Route::get('profile','ProfileController@index');
+
+Route::post('uploadAvatar','ProfileController@uploadAvatar');

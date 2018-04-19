@@ -18,10 +18,9 @@ class FriendsController extends BaseController
     }
 
     public function invite($id){
-        DB::table('friends')->insert([
-            'friend_1_id'=>Auth::user()->id,
-            'friend_2_id'=>$id,
-            'time'=>time()
+        DB::table('followers')->insert([
+            'user_id'=>Auth::user()->id,
+            'follow_id'=>$id
 
         ]);
         return redirect()->back();

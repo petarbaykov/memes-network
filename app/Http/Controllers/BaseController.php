@@ -13,13 +13,7 @@ class BaseController extends Controller
 
            
             if(Auth::check()){
-                $friend_reuests = DB::table('friends')
-                    ->join('users','users.id','=','friends.friend_1_id')
-                    ->where('friend_2_id',Auth::user()->id)
-                    ->where('status',0)
-                    ->get();
-               
-                \View::share('friends_requests', $friend_reuests);
+                
             }
             return $next($request);
              
