@@ -24,3 +24,7 @@ Route::post('like','MemeController@like');
 Route::get('profile','ProfileController@index');
 
 Route::post('uploadAvatar','ProfileController@uploadAvatar');
+
+$s = 'social.';
+Route::get('/social/redirect/{provider}',   ['as' => $s . 'redirect',   'uses' => 'Auth\LoginController@getSocialRedirect']);
+Route::get('/social/handle/{provider}',     ['as' => $s . 'handle',     'uses' => 'Auth\LoginController@getSocialHandle']);

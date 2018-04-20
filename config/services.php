@@ -34,5 +34,15 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
+    'facebook'=>[
+        'client_id' => "1996119753974177",         
+        'client_secret' =>"497ccf8199c118af8aa69abfc078db90", 
+        'redirect' => 'https://localhost:8000/social/handle/facebook',
+    ],
+    'google'=>[
+        'client_id' => "172457554540-6un5la11o1pqt5223ml6ofk1ib389oat.apps.googleusercontent.com",         
+        'client_secret' =>"63l3E4H89VoUcKk0aR1V5Sds", 
+        'redirect' => 'http://localhost:8000/social/handle/google',
+    ]
 
 ];

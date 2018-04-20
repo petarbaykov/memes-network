@@ -5,7 +5,15 @@
         <div class="bioRow">
             <div class="row">
                 <div class=" col-lg-4 profileImage">
-                    <div  id="profilePicture" style="background-image:url({{asset('images/'.Auth::user()->avatar)}}" onclick="">
+                    <?php $avatarImage = "";
+                        if(Auth::user()->social_login = 0):
+                        $avatarImage = asset('images/'.Auth::user()->avatar);
+                        else:
+                        $avatarImage = Auth::user()->avatar;
+                        endif;
+
+                    ?>
+                    <div  id="profilePicture" style="background-image:url({{$avatarImage}})" onclick="">
                          <form id="uploadPhoto"  enctype="multipart/form-data"></form>
                          <input type="file" id="uploadAvatar">
                      </div>

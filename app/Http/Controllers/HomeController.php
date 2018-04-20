@@ -26,11 +26,17 @@ class HomeController extends BaseController
      */
     public function index()
     {
-        $memes = Memes::orderBy('memes.id','desc')
-            ->select('memes.*')
+        $memes = Memes::join('users','users.id','=','memes.user_id')
             
+            ->join('memes_categories','memes.id','=','memes_categories.meme_id')
+            ->join('categories','memes_categories.category_id','=','categories.id')
+            ->leftJoin('comments','comments.meme_id','=','memes.id')
+            ->orderBy('memes.id','desc')
+            
+            ->groupBy('memes.id')
+            ->select('memes.*','users.name','categories.name as category_name',DB::raw('count(comments.meme_id) as comments_count'))
             ->get();
-
+            
         
         
         $data = [

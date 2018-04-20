@@ -6,7 +6,8 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
-
+                <a href="{{asset('social/redirect/facebook') }}">Login with Facebook</a>
+                <a href="{{asset('social/redirect/google') }}">Login with Google</a>
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}

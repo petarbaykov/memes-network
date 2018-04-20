@@ -27,11 +27,12 @@ body{
  margin:2px 0;
   box-sizing: border-box;
   display: inline-block;
+  width:100%;
 }
 .like{
   cursor: pointer;
   padding:10px 25px;
-  
+  float:left;
 }
 .like:hover{
   background:#eaeaea;
@@ -61,4 +62,8 @@ body{
 }
 #uploadAvatar{
   display: none;
+}
+.stats{
+  float:right;
+  padding:10px 25px;
 }
