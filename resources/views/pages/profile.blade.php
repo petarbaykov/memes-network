@@ -7,18 +7,20 @@
                
                 <div class=" col-lg-4 profileImage">
                     
-                    <div  id="profilePicture" style="background-image:url({{Auth::user()->avatarImage()}})" onclick="">
+                    <div id="profilePicture" style="background-image:url({{$user->avatarImage()}})" onclick="">
+                        @if(Auth::user()->id == $user->id)
                          <form id="uploadPhoto"  enctype="multipart/form-data"></form>
                          <input type="file" id="uploadAvatar">
+                        @endif
                      </div>
                      <button id="saveImage">Save</button>
                 </div>
                 <div class=" col-lg-8">
-                    <div class="user_name">{{Auth::user()->name}}</div>
+                    <div class="user_name">{{$user->name}}</div>
                     <div class="justifyFlex">
-                        <div class="profileCounterBox"><span class="profileCounter">{{Auth::user()->countMemes()}}</span> memes</div>
-                        <div class="profileCounterBox" data-toggle="modal" data-target="#followersModal"><span class="profileCounter">{{Auth::user()->countFollowers()}}</span> followers</div>
-                        <div class="profileCounterBox" data-toggle="modal" data-target="#followingModal"><span class="profileCounter">{{Auth::user()->countFollowing()}}</span> following</div>
+                        <div class="profileCounterBox"><span class="profileCounter">{{$user->countMemes()}}</span> memes</div>
+                        <div class="profileCounterBox" data-toggle="modal" data-target="#followersModal"><span class="profileCounter">{{$user->countFollowers()}}</span> followers</div>
+                        <div class="profileCounterBox" data-toggle="modal" data-target="#followingModal"><span class="profileCounter">{{$user->countFollowing()}}</span> following</div>
                     </div>
                 </div>
             </div>
@@ -48,13 +50,24 @@
                 </button>
             </div>
             <div class="modal-body">
-                @foreach(Auth::user()->followers as $follower)
+                @foreach($user->followers as $follower)
                     <div class="followBox">
-                        <span class="followName">{{$follower->name}}</span>
-                        @if(Auth::user()->isFollower($follower->id))
-                            <a class="folllowerBtn btn btn-warning" href="{{asset('unfollow/'.$follower->id)}}">Unfollow</a>
-                        @else
-                             <a  class="folllowerBtn btn btn-info" href="{{asset('invite/'.$follower->id)}}">Follow</a>
+                       
+                        <span class="followName">
+                             
+                             <div class="memeUser">
+                             
+                                <div class="" style="background-image:url({{ $follower->avatarImage()}})" ></div> 
+                                <span class="clearfix"></span>
+                            </div>
+                            {{$follower->name}}
+                        </span>
+                        @if(Auth::user()->id != $follower->id)
+                            @if(Auth::user()->isFollower($follower->id))
+                                <a class="folllowerBtn btn btn-warning" href="{{asset('unfollow/'.$follower->id)}}">Unfollow</a>
+                            @else
+                                <a  class="folllowerBtn btn btn-info" href="{{asset('invite/'.$follower->id)}}">Follow</a>
+                            @endif
                         @endif
                         <div class="clearfix"></div>
                     </div>
@@ -76,11 +89,21 @@
                 </button>
             </div>
             <div class="modal-body">
-                @foreach(Auth::user()->followings as $following)
+                @foreach($user->followings as $following)
                     <div class="followBox">
                         
-                        <span class="followName">{{$following->name}}</span>
-                        <a class="folllowerBtn btn btn-warning" href="{{asset('unfollow/'.$follower->id)}}">Unfollow</a>
+                        <span class="followName">
+                            <div class="memeUser">
+                             
+                                <div class="" style="background-image:url({{ $following->avatarImage()}})" ></div> 
+                                <span class="clearfix"></span>
+                            </div>
+                             {{ $following->name}}
+                           </span>
+                           
+                        @if(Auth::user()->id != $following->id)
+                        <a class="folllowerBtn btn btn-warning" href="{{asset('unfollow/'.$following->id)}}">Unfollow</a>
+                        @endif
                         <div class="clearfix"></div>
                     </div>
                 @endforeach

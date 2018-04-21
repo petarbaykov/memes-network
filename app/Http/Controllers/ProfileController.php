@@ -9,15 +9,23 @@ use App\User;
 use App\Memes;
 class ProfileController extends BaseController
 {
+    private $user = null;
     public function __construct(){
         $this->middleware('auth');
     }
 
-    public function index(){
-        $my_memes = Memes::where('user_id',Auth::user()->id)->orderBy('id','desc')->get();
+    public function index($id = ""){
+        if($id == ""){
+            $this->user = Auth::user();
+        }else{
+            $this->user = User::find($id);
+        }
+
+        $my_memes = Memes::where('user_id',$this->user->id)->orderBy('id','desc')->get();
 
         $data = [
-            'memes'=>$my_memes
+            'memes'=>$my_memes,
+            'user'=>$this->user
         ];
         return view('pages.profile')->with($data);
     }

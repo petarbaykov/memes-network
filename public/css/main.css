@@ -216,6 +216,7 @@ html,body{height:100%;}
   width:32%;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
   border-radius: 5px;
+  margin:10px 0;
 }
 .profileMeme img{
   width:100%;
@@ -243,7 +244,10 @@ html,body{height:100%;}
   
   cursor: pointer;
 }
-
+.followName .memeUser{
+  padding:0;
+  float:left;
+}
 /************************* LOGIN *********************/
 .panel{
   width: 600px;
@@ -315,6 +319,11 @@ label{
 }
 .help-block{
   color:red;
+}
+
+/************** MEME PAGE ***************/
+textarea{
+  resize: none;
 }
 /************ MEDIA QUERIES *********************/
 @media screen and (max-width:780px){

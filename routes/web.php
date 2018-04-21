@@ -21,7 +21,7 @@ Route::get('friend-suggests','FriendsController@suggests');
 Route::get('invite/{id}','FriendsController@invite');
 
 Route::post('like','MemeController@like');
-Route::get('profile','ProfileController@index');
+Route::get('profile/{id?}','ProfileController@index');
 
 Route::post('uploadAvatar','ProfileController@uploadAvatar');
 

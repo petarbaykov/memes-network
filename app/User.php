@@ -66,10 +66,12 @@ class User extends Authenticatable
         return false;
     }
     public function avatarImage(){
-        if($this->social_login = 0){
+        
+        if($this->social_login == 0){
             return asset('images/'.$this->avatar);
         }
-         return $this->avatar;
+        return $this->avatar;
+         
         
     }
 }
