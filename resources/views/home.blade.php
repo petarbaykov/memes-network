@@ -3,9 +3,9 @@
 @section('content')
     <div class="container">
        
-            <div class="">
+            <aside class="fixedCategories">
                 Покани: 
-            </div>
+            </aside>
             <div class="mainContent">
                  @foreach($memes as $meme)
                     @include('templates.memes')

@@ -83,7 +83,7 @@ var meme = {
            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
        }
        });
-        $.post(baseUrl+'save-meme',{img:dataUrl})
+        $.post(baseUrl+'save-meme',{img:dataUrl,category:$('#category').val()})
         .done(function(){
 
         });

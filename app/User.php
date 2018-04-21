@@ -53,4 +53,23 @@ class User extends Authenticatable
         }
         return false;
     }
+
+    public function countMemes(){
+        return DB::table('memes')->where('user_id',$this->id)->count();
+    }
+
+    public function isFollower($id){
+        $user = DB::table('followers')->where('user_id',$this->id)->where('follow_id',$id)->first();
+        if($user){
+            return true;
+        }
+        return false;
+    }
+    public function avatarImage(){
+        if($this->social_login = 0){
+            return asset('images/'.$this->avatar);
+        }
+         return $this->avatar;
+        
+    }
 }

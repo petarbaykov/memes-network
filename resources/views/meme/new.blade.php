@@ -24,6 +24,11 @@
             <canvas id="meme-canvas" style="display:none;" title="Right click -> &quot;Save image as...&quot;"></canvas>
         </p>
         <img id="result" src="">
+        <select name="category" id="category">
+        @foreach($categories as $cat)
+            <option value="{{$cat->id}}">{{$cat->name}}</option>
+        @endforeach
+        </select>
         </div>
     </div>
     

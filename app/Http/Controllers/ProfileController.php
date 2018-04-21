@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\BaseControllers;
 use Auth;
 use App\User;
+use App\Memes;
 class ProfileController extends BaseController
 {
     public function __construct(){
@@ -13,8 +14,12 @@ class ProfileController extends BaseController
     }
 
     public function index(){
+        $my_memes = Memes::where('user_id',Auth::user()->id)->orderBy('id','desc')->get();
 
-        return view('pages.profile');
+        $data = [
+            'memes'=>$my_memes
+        ];
+        return view('pages.profile')->with($data);
     }
 
     public function uploadAvatar(Request $request){

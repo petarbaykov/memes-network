@@ -10,8 +10,11 @@ use DB;
 class MemeController extends BaseController
 {
     public function new(){
-
-        return view('meme.new');
+        $categories = DB::table('categories')->get();
+        $data = [
+            'categories'=>$categories
+        ];
+        return view('meme.new')->with($data);
     }
 
     public function save(Request $request){
@@ -28,6 +31,11 @@ class MemeController extends BaseController
         $meme->image = $fileName;
         $meme->time = time();
         $meme->save();
+
+        DB::table('memes_categories')->insert([
+            'meme_id'=>$meme->id,
+            'category_id'=>$data['category']
+        ]);
     }
 
     public function like(Request $request){

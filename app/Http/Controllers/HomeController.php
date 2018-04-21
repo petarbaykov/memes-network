@@ -34,10 +34,10 @@ class HomeController extends BaseController
             ->orderBy('memes.id','desc')
             
             ->groupBy('memes.id')
-            ->select('memes.*','users.name','categories.name as category_name',DB::raw('count(comments.meme_id) as comments_count'))
+            ->select('memes.*','users.name','users.avatar','users.social_login','categories.name as category_name',DB::raw('count(comments.meme_id) as comments_count'))
             ->get();
             
-        
+       
         
         $data = [
             'memes'=>$memes,

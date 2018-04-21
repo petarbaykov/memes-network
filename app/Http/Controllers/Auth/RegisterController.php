@@ -36,6 +36,9 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
+        \View::composer('auth.register',function($view){
+            $view->with('page','auth');
+        });
         $this->middleware('guest');
     }
 

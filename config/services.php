@@ -43,6 +43,11 @@ return [
         'client_id' => "172457554540-6un5la11o1pqt5223ml6ofk1ib389oat.apps.googleusercontent.com",         
         'client_secret' =>"63l3E4H89VoUcKk0aR1V5Sds", 
         'redirect' => 'http://localhost:8000/social/handle/google',
+    ],
+    "twitter"=>[
+        "client_id"=>"3S32U2mRh0wzwxw4mBAZh7tTW",
+        "client_secret"=>"diDEH1DAax0BFsEG1BkxlLiybcqhKGGIFgm4PdkvidwSXu1p3T",
+        "redirect"=>"http://localhost:8000/social/handle/twitter"
     ]
 
 ];

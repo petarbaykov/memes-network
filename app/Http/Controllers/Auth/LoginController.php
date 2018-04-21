@@ -37,11 +37,14 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        \View::composer('auth.login',function($view){
+            $view->with('page','auth');
+        });
         $this->middleware('guest')->except('logout');
     }
 
     public function getSocialRedirect($provider){
-        return Socialite::driver($provider)->scopes(['profile','email'])->redirect();
+        return Socialite::driver($provider)->redirect();
     }
 
     public function getSocialHandle($provider){

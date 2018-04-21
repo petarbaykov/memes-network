@@ -1,4 +1,16 @@
 <div class="singleMeme">
+    <div class="memeUser">
+        <?php $avatarImage = "";
+            if($meme->social_login = 0):
+            $avatarImage = asset('images/'.$meme->avatar);
+            else:
+            $avatarImage = $meme->avatar;
+            endif;
+
+        ?>
+        <div class="" style="background-image:url({{$avatarImage}})"></div> <span class="meme_username">{{$meme->name}}</span>
+        <span class="clearfix"></span>
+    </div>
     <img src="{{ asset('memes').'/'.$meme->image }}">
     <div class="memeBar">
         @if(Auth::check())
@@ -9,14 +21,23 @@
                 @else
                     Like 
                 @endif
+                
             </span>
         </div>
+        <div class="comment" id="meme_{{$meme->id}}">
+           <span class="fa fa-comment"></span>  Comment
+        </div>
+         <div class="clearfix"></div>
+         <div class="commentBox">
+            <input type="text">
+         </div>
         @endif
         <div class="stats">
-           <span class="fa fa-user"></span> {{$meme->name}}
+           
            <span class="fa fa-folder"></span> {{$meme->category_name}}
            <span class="fa fa-clock-o"></span> {{time_elapsed_string('@'.$meme->time)}}
            <span class="fa fa-comments"></span> {{$meme->comments_count}}
         </div>
+        <div class="clearfix"></div>
     </div>
 </div>

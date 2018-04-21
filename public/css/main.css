@@ -3,28 +3,120 @@ body{
 	padding-top:55px;
 
 }
+html,body{height:100%;}
+.justifyFlex {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    -webkit-justify-content: space-between;
+    -webkit-flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: stretch;
+    -webkit-align-items: stretch;
+}
+.justifyFlexCenter {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    -webkit-justify-content: space-between;
+    -webkit-flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    -webkit-align-items: center;
+}
+.justifyCenter{
+  justify-content: center;
+  -webkit-justify-content:center;
+}
+.navbar{
+  background-color:#FFEB3B!important;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}
+#navbarUserName{
+  color:#000;
+  font-weight: bold;
+}
+.show{display: block;}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdownMenu {
+  cursor: pointer;
+}
+.dropdownMenu .memeUser{
+  padding:.5rem 0;
+}
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right:0;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-item:hover{
+  background:#00bcd4;
+  color:#fff;
+}
+.floating-fixed{
+  position: fixed;
+  bottom:20px;
+  right:20px;
+}
+.floating-btn{
+    background: #00bcd4;
+    color: #fff;
+    padding: 6px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}
+.floating-btn:hover{
+  color:#fff;
+}
+/************** HOME PAGE **************/
 .mainContent {
   width:500px;
   max-width:500px;
   margin:0 auto;
 }
 .singleMeme{
-  padding:15px;
+
   box-sizing:border-box;
   box-shadow:0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
   margin:15px 0;
   padding-bottom:0;
+  border-radius: 5px;
 }
 .singleMeme img{
   width:100%;
   margin:0 auto;
   display: block;
-}
-#navbarNavDropdown.navbar-collapse{
-
+  height: 500px;
+  background:url(../images/Loading_icon.gif);
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 .memeBar{
- margin:2px 0;
+ margin-top:2px;
   box-sizing: border-box;
   display: inline-block;
   width:100%;
@@ -33,14 +125,66 @@ body{
   cursor: pointer;
   padding:10px 25px;
   float:left;
+  width:50%;
+  text-align: center;
+}
+.comment{
+  cursor: pointer;
+  padding:10px 25px;
+  float:left;
+  width:50%;
+  text-align: center;
 }
 .like:hover{
   background:#eaeaea;
    
 }
+.comment:hover{
+   background:#eaeaea;
+}
 .liked{
   color:#007bff;
 }
+
+.stats{
+  text-align: center;
+  padding:10px 25px;
+  width:100%;
+  background:#efefef;
+}
+.clearfix{
+  clear:both;
+}
+.stats .fa{
+  margin-left:15px;
+  display: inline-block;
+}
+.commentBox{
+  width:100%;
+  display: none;
+}
+
+.fixedCategories{
+  position: fixed;
+}
+.memeUser{
+  padding:10px 15px;
+}
+.memeUser div{
+  width:30px;
+  height: 30px;
+  display: inline-block;
+  background-size:cover;
+  border-radius: 50%;
+  float:left;
+  margin-right: 10px;
+}
+.meme_username{
+  font-weight: bold;
+}
+
+
+/***************** PROFILE PAGE *************/
 #profilePicture{
   width:200px;
   height:200px;
@@ -48,6 +192,7 @@ body{
 
   background-size:cover;
   margin:0 auto;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
 }
 .bioRow{
   padding:15px;
@@ -56,6 +201,7 @@ body{
 .user_name{
   font-size:1.5rem;
   font-weight: bold;
+  margin:10px 0;
 }
 .profileImage{
   text-align: center;
@@ -63,7 +209,116 @@ body{
 #uploadAvatar{
   display: none;
 }
-.stats{
+#saveImage{
+  display: none;
+}
+.profileMeme{
+  width:32%;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+  border-radius: 5px;
+}
+.profileMeme img{
+  width:100%;
+
+}
+.folllowerBtn{
   float:right;
-  padding:10px 25px;
+}
+.followBox{
+  border-bottom:1px solid #ccc;
+  padding:10px 0;
+}
+.followName{
+  display: inline-block;
+  padding:7px;
+}
+.profileCounter{
+  font-weight: bold;
+  font-size:2rem;
+}
+.profileCounterBox{
+  width:33%;
+  text-align: center;
+  background:#fbfbfb;
+  
+  cursor: pointer;
+}
+
+/************************* LOGIN *********************/
+.panel{
+  width: 600px;
+  display: block;
+  margin:0 auto;
+  text-align: center;
+  background:#fff;
+  padding:15px 100px;
+  margin-bottom:55px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+  border-radius: 10px;
+}
+
+.bodyBg{
+  background: #FFEB3B;  /* fallback for old browsers */
+
+}
+.bodyBg .navbar{
+  display: none;
+}
+.form-control{
+  background:#f7f7f7;
+  padding:10px 10px;
+}
+.form-control:focus{
+  background:#f7f7f7;
+}
+.form-group{
+  text-align: left;
+}
+label{
+  font-weight: bold;
+}
+.auth-btn{
+  width:100%;
+  padding:10px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.socialBtn{
+  display: block;
+  padding:10px;
+  border-radius: 10px;
+  box-shadow:0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+  color:#fff;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom:10px;
+}
+.socialBtn .fa{
+  font-size:2rem;
+  margin-right: 10px;
+}
+.socialBtn:hover{
+  text-decoration: none;
+  color:#fff;
+}
+.socialFb{
+  background:#425F9C;
+}
+.socialTwitter{
+  background:#1DA1F3;
+}
+.socialGoogle{
+  color:#000;
+}
+.socialGoogle:hover{
+  color:#000;
+}
+.help-block{
+  color:red;
+}
+/************ MEDIA QUERIES *********************/
+@media screen and (max-width:780px){
+  .mainContent{
+    width:100%;
+  }
 }

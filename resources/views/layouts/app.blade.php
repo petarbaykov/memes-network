@@ -19,12 +19,12 @@
         var baseUrl = "<?php echo asset('/'); ?>";
      </script>
 </head>
-<body @if( (isset($page) && $page == "home") || isset($isAuth )) class="bodyBg" @endif>
+<body @if( (isset($page) && ( $page == "home" || $page == "auth") || isset($isAuth ))) class="bodyBg" @endif>
     <div id="app">
         @if(!isset($isAuth))
         <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top ">
             <div class="container">
-          <a class="navbar-brand" href="{{asset('/')}}">Laravel Blog</a>
+          <a class="navbar-brand" href="{{asset('/')}}">Memes Share</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -38,30 +38,41 @@
                     <a class="nav-link" href="{{ route('register') }}">Регистрация <span class="sr-only">(current)</span></a>
                   </li>
             @else
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="fa fa-bell"></span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                   
-                </div>
+              <li class="nav-item ">
+                    
+                    <div class="dropdown dropdownMenu">
+                      <a class="nav-link" href="#" id="notifications">
+                        <span class="fa fa-bell"></span>
+                     </a>
+                      <div class="notiicationsDropDown dropdown-content">
+                        asdasdasd
+                      </div>
+                    </div>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <li class="nav-item justifyFlex">
+                <a class="nav-link " href="#" id="navbarUserName" >
                    {{ Auth::user()->name }}
+
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  
-                     <a  class="dropdown-item" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                 document.getElementById('logout-form').submit();">
-                        Изход
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-                    </form>
-                  
-                </div>
+                <div class="dropdown dropdownMenu">
+                    <div class="memeUser">
+                       <div class="" style="background-image:url({{Auth::user()->avatarImage()}})"  id="userDropDown"></div> 
+                       <span class="clearfix"></span>
+                    </div>
+                    <div id="myDropdown" class="dropdown-content">
+                      <a class="dropdown-item" href="{{asset('profile')}}">Profile</a>
+                       <a  class="dropdown-item" href="{{ route('logout') }}"
+                          onclick="event.preventDefault();
+                                  document.getElementById('logout-form').submit();">
+                          Logout
+                      </a>
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                          {{ csrf_field() }}
+                      </form>
+                      
+                     
+                    </div>
+                  </div>
               </li>
               @endif
             </ul>
@@ -69,23 +80,19 @@
         </div>
         </nav>
         @endif
-            @yield('content')
+        @yield('content')
        
-       
+       <a class="floating-btn floating-fixed" id="newMeme" href="{{asset('new-meme')}}"><span class="fa fa-plus"></span></a>
     </div>
 
     <!-- Scripts -->
 
-     <script src="{{ asset('js/jquery.min.js') }}"></script>
-      <script src="{{ asset('js/requester.js') }}"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/requester.js') }}"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-     <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
-       <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
      
-     <script>
-         
-
-     </script>
       
 </body>
 </html>
