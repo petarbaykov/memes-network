@@ -23,7 +23,12 @@ $(document).ready(function(){
 	});	
 
 	$('.comment').click(function(){
-		$('.commentBox').slideDown();
+		if($('.commentBox').is(":visible")){
+			$('.commentBox').slideUp();
+		}else{
+			$('.commentBox').slideDown();
+		}
+		
 	});
 
 	$('#userDropDown').click(function(){
@@ -66,7 +71,18 @@ var pageFunc = {
 				}
 			},
 		});
+	},
+	postComment:function(id){
+		let comment = $('#userComment').val();
+		let data = {
+			meme_id:id,
+			comment:comment
+		}
+		requester.post('comments/post',data,function(data){
+			$('.memeComments').append('<div class="singleComment"><span class="commentUser">'+data.name+"</span> "+comment);
+		},true);
 	}
+
 }
 /*
 window.onclick = function(event) {

@@ -38,7 +38,7 @@ class HomeController extends BaseController
             ->get();
             
        
-        
+       
         $data = [
             'memes'=>$memes,
            

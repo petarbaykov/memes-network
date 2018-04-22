@@ -24,7 +24,9 @@ Route::post('like','MemeController@like');
 Route::get('profile/{id?}','ProfileController@index');
 
 Route::post('uploadAvatar','ProfileController@uploadAvatar');
-
+Route::group(["prefix"=>"comments"],function(){
+    Route::post('post','CommentsController@post');
+});
 $s = 'social.';
 Route::get('/social/redirect/{provider}',   ['as' => $s . 'redirect',   'uses' => 'Auth\LoginController@getSocialRedirect']);
 Route::get('/social/handle/{provider}',     ['as' => $s . 'handle',     'uses' => 'Auth\LoginController@getSocialHandle']);

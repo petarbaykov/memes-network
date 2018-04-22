@@ -29,7 +29,18 @@
         </div>
          <div class="clearfix"></div>
          <div class="commentBox">
-            <input type="text">
+            <input type="text" placeholder="Enter a comment" id="userComment">
+            <button class="btn btn-primary" onclick="pageFunc.postComment({{$meme->id}})">Comment</button>
+            <div class="clearfix"></div>
+            <div class="memeComments">
+                
+                @foreach($meme->comments as $comment)
+                    <div class="singleComment">
+                        <span class="commentUser">{{$comment->users[0]->name}}</span>
+                        {{$comment->comment}}
+                    </div>
+                @endforeach
+            </div>
          </div>
         @endif
         <div class="stats">

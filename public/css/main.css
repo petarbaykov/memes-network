@@ -183,7 +183,27 @@ html,body{height:100%;}
   font-weight: bold;
 }
 
-
+.commentBox{
+  
+  padding:5px;
+  box-sizing:border-box;
+ border-top:1px solid #ccc;
+}
+.commentBox input {
+  border:none;
+  padding:5px;
+  width:calc(100% - 100px );
+  
+}
+.commentBox button{
+  float:right;
+}
+.commentUser{
+  font-weight: bold;
+}
+.singleComment{
+  margin:5px 0;
+}
 /***************** PROFILE PAGE *************/
 #profilePicture{
   width:200px;
