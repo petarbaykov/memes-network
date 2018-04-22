@@ -3,9 +3,10 @@
     #app{height:100%;}
 </style>
 @section('content')
+
 <div class="appContainer">
         <div class="container">
-            <h1>Create new meme</h1>
+            <h1 class="newMemeTitle">Create new meme</h1>
 
             <div class="steps justifyFlex">
                 <div class="stepCircle"><span class="fa fa-check"></span></div>
@@ -61,18 +62,27 @@
                         <p>
                             <canvas id="meme-canvas" style="display:none;" title="Right click -> &quot;Save image as...&quot;"></canvas>
                         </p>
-                        <img id="result" src="">
+                        <div class="previewMeme">
+                            <img id="result" src="">
+                            <div id="loadingMeme"></div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="memeSteps inactive" id="thirdStep">
                 <div class="row">
                     <div class="col-6">
-
+                        <div class="previewMeme">
+                            <img id="finalMeme">
+                        </div>
                     </div>
                     <div class="col-6">
-                       
+                         <div class="alert alert-success inactive" role="alert" id="successPublish">
+                            <h4 class="alert-heading">Meme Published!</h4>
+                            <p>Your meme was published successfully!</p>
+                        </div>   
                             <div class="form-group">
+                                <label>Choose category</label>
                                 <select name="category" id="category" class="form-control">
                                 @foreach($categories as $cat)
                                     <option value="{{$cat->id}}">{{$cat->name}}</option>

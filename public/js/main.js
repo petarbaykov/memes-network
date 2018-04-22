@@ -72,8 +72,8 @@ var pageFunc = {
 			},
 		});
 	},
-	postComment:function(id){
-		let comment = $('#userComment').val();
+	postComment:function(id,self){
+		let comment = $(self).prev().val();
 		let data = {
 			meme_id:id,
 			comment:comment

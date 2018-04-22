@@ -30,7 +30,7 @@
          <div class="clearfix"></div>
          <div class="commentBox">
             <input type="text" placeholder="Enter a comment" id="userComment">
-            <button class="btn btn-primary" onclick="pageFunc.postComment({{$meme->id}})">Comment</button>
+            <button class="btn btn-primary" onclick="pageFunc.postComment({{$meme->id}},this)">Comment</button>
             <div class="clearfix"></div>
             <div class="memeComments">
                 

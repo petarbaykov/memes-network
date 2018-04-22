@@ -74,4 +74,16 @@ class User extends Authenticatable
          
         
     }
+
+    public function notifications(){
+        return $this->hasMany('App\Notifications');
+        /*return DB::table('notifications')
+                ->join('users','notifications.from_user_id','=','users.id')
+                ->where('notifications.status','=',0)
+                ->select('users.name','users.avatar','notifications.*')
+                ->get();*/
+    }
+    public function unseenNotifications(){
+        return DB::table('notifications')->where('user_id',$this->id)->where('status',0)->count();
+    }
 }

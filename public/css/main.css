@@ -30,6 +30,10 @@ html,body{height:100%;}
   justify-content: center;
   -webkit-justify-content:center;
 }
+.justifyLeft{
+  justify-content: left;
+  -webkit-justify-content:left;
+}
 .navbar{
   background-color:#FFEB3B!important;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
@@ -94,6 +98,62 @@ html,body{height:100%;}
 }
 .inactive{
   display: none;
+}
+.notiicationsDropDown {
+  top:45px;
+  min-width:360px;
+}
+.notificationHeading{
+  padding:10px;
+  background:#00bcd4;
+  position: relative;
+  color:#fff;
+}
+.notificationsBody{
+  padding:10px;
+}
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  
+  border-bottom: 10px solid #00bcd4;
+  position: absolute;
+  top:-10px;
+  right:5px;
+}
+.notiPic{
+  width:35px;
+  height:35px;
+  border-radius: 50%;
+  margin-right:5px;
+}
+.singleNotification{
+  padding:10px 0;
+}
+.notiMsg{
+  width:calc(100% - 45px);
+}
+.relative{
+  position:relative;
+}
+.notiCounter{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #f44336;
+    color: #fff;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    vertical-align: middle;
+    padding-bottom: 11px;
+    font-weight: bold;
+}
+.fa-bell{
+  font-size:1.5rem !important;
 }
 /************** HOME PAGE **************/
 .mainContent {
@@ -444,10 +504,41 @@ textarea{
   left:50%;
   background:#ccc;
 }
-#result{
+.previewMeme{
   height:400px;
+  position: relative;
+}
+
+#loadingMeme{
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+
+   background:url(../images/loading.gif);
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: none;
+  background-size:30%;
+}
+#result,#finalMeme{
+  height: 100%;
+  width:100%;
   margin:0 auto;
   display: block;
+   background:url(../images/loading.gif);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size:30%;
+
+}
+
+#category{
+  height:auto;
+}
+.newMemeTitle{
+  padding-top:50px;
 }
 /************ MEDIA QUERIES *********************/
 @media screen and (max-width:780px){

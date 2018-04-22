@@ -42,6 +42,7 @@ function generateMeme (img, topText, bottomText, topTextSize, bottomTextSize) {
     });
     dataUrl = canvas.toDataURL();
     document.getElementById("result").src = dataUrl;
+    $('#loadingMeme').hide();
 }
 
 function init () {
@@ -64,6 +65,7 @@ function init () {
     // Generate button click listener
     generateBtn.addEventListener('click', function () {
         // Read image as DataURL using the FileReader API
+        $('#loadingMeme').show();
         let reader = new FileReader();
         reader.readAsDataURL(imageInput);
         reader.onload = function () {
@@ -86,14 +88,34 @@ var meme = {
            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
        }
        });
-        $.post(baseUrl+'save-meme',{img:dataUrl,category:$('#category').val()})
-        .done(function(){
+       var file = dataURLtoFile(dataUrl,'user.png');
 
-        });
+        var data = new FormData();
+       data.append("img", file);
+       data.append("category", $('#category').val());
+       $.ajax({
+                url: baseUrl+'save-meme',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: data,
+                type: "post",
+                success: function(data) {
+                   $('#successPublish').removeClass('inactive');
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+       /* $.post(,{img:dataUrl,category:$('#category').val()})
+        .done(function(data){
+            console.log(data);
+        });*/
     },
     publish:function(){
         $('#secondStep').addClass('inactive');
         $('#thirdStep').removeClass('inactive');
+        $('#finalMeme').attr('src',$('#result').attr('src'));
     }
 
 }
@@ -151,4 +173,12 @@ function hightlight(){
 }
 function unhighlight(){
  dropArea.classList.remove('highlight');
+}
+function dataURLtoFile(dataurl, filename) {
+    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+    while(n--){
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, {type:mime});
 }

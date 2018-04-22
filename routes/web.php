@@ -27,6 +27,17 @@ Route::post('uploadAvatar','ProfileController@uploadAvatar');
 Route::group(["prefix"=>"comments"],function(){
     Route::post('post','CommentsController@post');
 });
+
+Route::group(['prefix'=>'admin'],function(){
+    Route::get('login','Admin\AdminController@login');
+    Route::get('dashboard','Admin\AdminController@dashboard');
+    Route::get('categories','Admin\AdminController@categories');
+    Route::get('category/edit/{id}','Admin\AdminController@editShow');
+    Route::post('category/update/{id}','Admin\AdminController@update');
+    Route::get('category/delete/{id}','Admin\AdminController@deleteCategory');
+    Route::get('category/create','Admin\AdminController@addCategory');
+    Route::post('category/create','Admin\AdminController@postCategory');
+});
 $s = 'social.';
 Route::get('/social/redirect/{provider}',   ['as' => $s . 'redirect',   'uses' => 'Auth\LoginController@getSocialRedirect']);
 Route::get('/social/handle/{provider}',     ['as' => $s . 'handle',     'uses' => 'Auth\LoginController@getSocialHandle']);
