@@ -92,6 +92,9 @@ html,body{height:100%;}
 .floating-btn:hover{
   color:#fff;
 }
+.inactive{
+  display: none;
+}
 /************** HOME PAGE **************/
 .mainContent {
   width:500px;
@@ -342,8 +345,109 @@ label{
 }
 
 /************** MEME PAGE ***************/
+.appContainer{
+  height:100%;
+}
 textarea{
   resize: none;
+}
+
+#drop-area {
+  border: 3px dashed #00bcd4;
+  border-radius: 10px;
+  width: 100%;
+  font-family: sans-serif;
+  margin: 20px auto;
+  padding: 20px;
+  height: 400px;
+  position: relative;
+}
+#drop-area.highlight {
+  background: #00bcd4;
+  color:#fff;
+}
+.uploadForm {
+  margin-bottom: 10px;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  width:100%;
+  text-align: center;
+}
+.uploadForm .fa{
+  font-size:5rem;
+}
+.uploadForm p{
+  font-size:2rem;
+}
+#gallery {
+  margin-top: 10px;
+}
+#gallery img {
+  width: 150px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.chooseBtn {
+  display: inline-block;
+  padding: 10px 15px;
+  background:transparent;
+  cursor: pointer;
+  border-radius: 5px;
+  border:2px solid #00bcd4;
+  color:#00bcd4;
+}
+
+#fileElem {
+  display: none;
+}
+.steps{
+  margin-top:50px;
+  position: relative;
+}
+.stepCircle{
+  width:50px;
+  height: 50px;
+  border-radius: 50%;
+  background:#00bcd4;
+  display: inline-block;
+  position: relative;
+  border:5px solid #eaeaea;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}
+
+.stepCircle span{
+  position: absolute;
+  top:50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  font-weight: bold;
+  font-size:1.5rem;
+  color:#fff;
+}
+.stepLine {
+    position: absolute;
+    width: 50%;
+    height: 5px;
+    background: #00bcd4;
+    left: 0;
+    top:50%;
+    z-index: -1;
+}
+.stepLine2{
+  left:50%;
+  background:#ccc;
+}
+#result{
+  height:400px;
+  margin:0 auto;
+  display: block;
 }
 /************ MEDIA QUERIES *********************/
 @media screen and (max-width:780px){

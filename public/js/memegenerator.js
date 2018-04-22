@@ -50,7 +50,7 @@ function init () {
     bottomTextInput = document.getElementById('bottom-text');
     topTextSizeInput = document.getElementById('top-text-size-input');
     bottomTextSizeInput = document.getElementById('bottom-text-size-input');
-    imageInput = document.getElementById('image-input');
+    /*imageInput = document.getElementById('image-input');*/
     generateBtn = document.getElementById('generate-btn');
     canvas = document.getElementById('meme-canvas');
     
@@ -65,16 +65,19 @@ function init () {
     generateBtn.addEventListener('click', function () {
         // Read image as DataURL using the FileReader API
         let reader = new FileReader();
+        reader.readAsDataURL(imageInput);
         reader.onload = function () {
             let img = new Image;
             img.src = reader.result;
-            generateMeme(img, topTextInput.value, bottomTextInput.value, topTextSizeInput.value, bottomTextSizeInput.value);
-        };
-        reader.readAsDataURL(imageInput.files[0]);
+            setTimeout(function(){
+                  generateMeme(img, topTextInput.value, bottomTextInput.value, topTextSizeInput.value, bottomTextSizeInput.value);
+            },1000);
+           };
+        
     });
 }
 
-init();
+/*init();*/
 
 var meme = {
     save:function(){
@@ -87,6 +90,65 @@ var meme = {
         .done(function(){
 
         });
+    },
+    publish:function(){
+        $('#secondStep').addClass('inactive');
+        $('#thirdStep').removeClass('inactive');
     }
 
+}
+let dropArea = document.getElementById('drop-area');
+dropArea.addEventListener('dragenter', function(e){
+    preventDefaults(e);
+    hightlight();
+}, false);
+dropArea.addEventListener('dragleave', function(e){
+    preventDefaults(e);
+    unhighlight();
+}, false);
+dropArea.addEventListener('dragover', function(e){
+    preventDefaults(e);
+    hightlight();
+}, false);
+dropArea.addEventListener('drop', function(e){
+    preventDefaults(e);
+    handleDrop(e);
+    unhighlight();
+}, false);
+
+
+
+function nextStep(files){
+    $('#firstStep').addClass('inactive');
+    $('#secondStep').removeClass('inactive');
+    init();
+    /*loadImg();*/
+    let reader = new FileReader()
+    reader.readAsDataURL(files[0]);
+    reader.onloadend = function() {
+        let img = new Image;
+        document.getElementById("result").src = reader.result;
+    }
+    
+}
+function handleDrop(e) {
+  var dt = e.dataTransfer;
+  var files = dt.files;
+
+  handleFiles(files);
+  
+}
+function preventDefaults(e){
+    e.preventDefault();
+    e.stopPropagation();
+}
+function handleFiles(files) {
+ nextStep(files);
+ imageInput = files[0];
+}
+function hightlight(){
+    dropArea.classList.add('highlight');
+}
+function unhighlight(){
+ dropArea.classList.remove('highlight');
 }
