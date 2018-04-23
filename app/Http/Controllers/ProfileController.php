@@ -34,7 +34,7 @@ class ProfileController extends BaseController
         $filename = $_FILES['file']['name'];
         
        
-        $location = "images/".$filename;
+        $location = "avatars/".$filename;
         $imageName = pathinfo($location);
         $ext = $imageName['extension'];
         $filename = "avatar_".Auth::user()->id . '.'.$ext;
@@ -43,7 +43,9 @@ class ProfileController extends BaseController
         
         $user->avatar =  $filename;
         $user->save();
-         $location = "images/".$filename;	
+         $location = "avatars/".$filename;	
         move_uploaded_file($_FILES['file']['tmp_name'],$location);
+
+        return $location;
     }
 }

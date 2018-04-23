@@ -180,6 +180,18 @@ html,body{height:100%;}
 .fa-bell{
   font-size:1.5rem !important;
 }
+.loginBtn{
+  background:#00bcd4;
+  color:#fff;
+  border-radius: 20px;
+  padding:0 20px;
+   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}
+.loginBtn a{
+  color:#fff !important;
+  font-weight: bold;
+ 
+}
 /************** HOME PAGE **************/
 .mainContent {
   width:500px;
@@ -254,7 +266,50 @@ html,body{height:100%;}
 
 .fixedCategories{
   position: fixed;
+  width:215px;
+  margin-right:10px;
 }
+.fixedWidgets{
+  position: fixed;
+  width:230px;
+  right:0;
+  margin-left:10px;
+}
+.asideUserBox{
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  border-radius: 3px;
+}
+#asideImage{
+  width:90px;
+  height:90px;
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+  border: 3px solid #fff;
+}
+.upperPart{
+  background:#00bcd4;
+  padding:20px;
+  height:120px;
+  color:#fff;
+}
+.userImage{
+  position:absolute;
+  top:65px;
+  left:50%;
+  -ms-transform:translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform:translateX(-50%);
+  
+}
+.downPart{
+  padding-top:30px;
+  background:#ecf0f5;
+}
+.border-right{border-right:1px solid #ccc;}
+.statCount{font-weight: bold;display: block;text-align: center;}
+.statBox{width:32%;padding:5px;box-sizing: border-box;text-align: center;}
 .memeUser{
   padding:10px 15px;
 }
@@ -292,6 +347,8 @@ html,body{height:100%;}
 .singleComment{
   margin:5px 0;
 }
+.singleCategory{margin:5px 0;display: block;}
+.singleCategory img{width:25px;}
 /***************** PROFILE PAGE *************/
 #profilePicture{
   width:200px;

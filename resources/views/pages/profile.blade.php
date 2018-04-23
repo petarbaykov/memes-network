@@ -10,7 +10,7 @@
                     <div id="profilePicture" style="background-image:url({{$user->avatarImage()}})" onclick="">
                         @if(Auth::user()->id == $user->id)
                          <form id="uploadPhoto"  enctype="multipart/form-data"></form>
-                         <input type="file" id="uploadAvatar">
+                         <input type="file" id="uploadAvatar" onchange="pageFunc.saveImage()">
                         @endif
                      </div>
                      <button id="saveImage">Save</button>

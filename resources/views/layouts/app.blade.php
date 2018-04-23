@@ -31,12 +31,10 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav  ml-auto">
               @guest
-                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ route('login') }}">Вход <span class="sr-only">(current)</span></a>
+                 <li class="nav-item active loginBtn">
+                    <a class="nav-link" href="{{ route('login') }}">Sign in <span class="sr-only">(current)</span></a>
                   </li>
-                  <li class="nav-item active">
-                    <a class="nav-link" href="{{ route('register') }}">Регистрация <span class="sr-only">(current)</span></a>
-                  </li>
+                  
             @else
               <li class="nav-item ">
                     
@@ -119,7 +117,12 @@
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
-     
+     <script>
+      var left = $('.mainContent').offset().left + $('.mainContent').outerWidth();
+      $('.fixedWidgets').css({left:left});
+      $('.fixedCategories').css({width:$('.mainContent').css('margin-left')});
+      $('.fixedWidgets').css({width:$('.mainContent').css('margin-left')});
+     </script>
       
 </body>
 </html>

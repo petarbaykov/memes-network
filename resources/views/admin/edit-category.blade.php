@@ -28,7 +28,7 @@
                 </div>
                  <div class="form-group">
                   <label>Category image</label>
-                  <input type="input" class="form-control" name="image" placeholder="Enter ..." value="{{$category->image}}">
+                  <input type="file" class="form-control" name="image" placeholder="Enter ..." value="{{$category->image}}">
                 </div>
                 <!-- textarea -->
                 <div class="form-group">

@@ -27,6 +27,9 @@ class ForgotPasswordController extends Controller
      */
     public function __construct()
     {
+        \View::composer('auth.passwords.email',function($view){
+            $view->with('page','auth');
+        });
         $this->middleware('guest');
     }
 }

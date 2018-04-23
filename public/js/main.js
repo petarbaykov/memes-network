@@ -70,7 +70,7 @@ var pageFunc = {
 			processData: false,
 			success: function(data){
 				if(data != 0){
-					console.log(data);
+					$('#profilePicture').css({backgroundImage:"url("+baseUrl+data+")"});
 				}else{
 					alert('file not uploaded');
 				}

@@ -45,7 +45,7 @@
         @endif
         <div class="stats">
            
-           <span class="fa fa-folder"></span> {{$meme->category_name}}
+           <span class="fa fa-folder"></span><a href="{{asset('category/'.$meme->category_slug)}}"> {{$meme->category_name}}</a>
            <span class="fa fa-clock-o"></span> {{time_elapsed_string('@'.$meme->time)}}
            <span class="fa fa-comments"></span> {{$meme->comments_count}}
         </div>

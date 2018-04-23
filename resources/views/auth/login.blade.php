@@ -64,7 +64,10 @@
                          <div class="form-group">
                              <a class="btn btn-link" href="{{ route('password.request') }}">
                                     Forgot Your Password?
-                                </a>
+                            </a>
+                             <a class="btn btn-link" href="{{ route('register') }}">
+                                    Dont't have account?
+                            </a>
                          </div>
                     </form>
                 </div>

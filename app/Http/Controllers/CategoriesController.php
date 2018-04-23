@@ -3,30 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\BaseController;
 use App\Memes;
 use Auth;
 use DB;
 use App\Categories;
-class HomeController extends BaseController
+class CategoriesController extends BaseController
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-        
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+    public function get($slug){
         $memes = Memes::join('users','users.id','=','memes.user_id')
             
             ->join('memes_categories','memes.id','=','memes_categories.meme_id')
@@ -36,6 +20,7 @@ class HomeController extends BaseController
             
             ->groupBy('memes.id')
             ->select('memes.*','users.name','users.avatar','users.social_login','categories.name as category_name','categories.slug as category_slug',DB::raw('count(comments.meme_id) as comments_count'))
+            ->where('categories.slug',$slug)
             ->get();
             
        $categories = Categories::all();
@@ -44,6 +29,6 @@ class HomeController extends BaseController
             'memes'=>$memes,
            'categories'=>$categories
         ];
-        return view('home')->with($data);
+        return view('meme.categories')->with($data);
     }
 }

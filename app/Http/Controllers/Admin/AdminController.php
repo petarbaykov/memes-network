@@ -40,12 +40,16 @@ class AdminController extends BaseController
 
     public function update(Request $request,$id){
         $data = $request->all();
+         if(isset($_FILES['image'])){
+            $location = "categories/". $_FILES['image']['name'];	
+            move_uploaded_file($_FILES['image']['tmp_name'],$location);
+        }
         $category = Categories::find($id);
         $category->name = $data['name'];
         $category->slug = $data['slug'];
         $category->description = $data['description'];
-        if(isset($_FILES['img'])){
-            $category->image = $data['img'];
+        if(isset($_FILES['image'])){
+             $category->image = $_FILES['image']['name'];
         }
         $category->save();
         return redirect()->back()->with('msg',['title'=>'Category updated!','body'=>'Category updated successfully!']);
