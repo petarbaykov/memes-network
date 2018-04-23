@@ -110,7 +110,9 @@ html,body{height:100%;}
   color:#fff;
 }
 .notificationsBody{
-  padding:10px;
+ 
+  height:350px;
+  overflow-y:scroll;
 }
 .arrow-up {
   width: 0; 
@@ -130,7 +132,30 @@ html,body{height:100%;}
   margin-right:5px;
 }
 .singleNotification{
-  padding:10px 0;
+  padding:10px;
+  background:#E5EAF2;
+}
+/* width */
+.notificationsBody::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+.notificationsBody::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+/* Handle */
+.notificationsBody::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+.notificationsBody::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+.notiSeen{
+  background:#fff;
 }
 .notiMsg{
   width:calc(100% - 45px);

@@ -38,6 +38,8 @@ Route::group(['prefix'=>'admin'],function(){
     Route::get('category/create','Admin\AdminController@addCategory');
     Route::post('category/create','Admin\AdminController@postCategory');
 });
+
+Route::post('noti/seen','NotificationController@seen');
 $s = 'social.';
 Route::get('/social/redirect/{provider}',   ['as' => $s . 'redirect',   'uses' => 'Auth\LoginController@getSocialRedirect']);
 Route::get('/social/handle/{provider}',     ['as' => $s . 'handle',     'uses' => 'Auth\LoginController@getSocialHandle']);

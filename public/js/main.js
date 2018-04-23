@@ -36,7 +36,12 @@ $(document).ready(function(){
 	});
 
 	$('#notifications').click(function(){
+		if(!$('.notiicationsDropDown').is(":visible")){
+			pageFunc.notiSeen();
+		}
 		$('.notiicationsDropDown').toggle();
+		
+		
 	});	
 });
 
@@ -80,6 +85,11 @@ var pageFunc = {
 		}
 		requester.post('comments/post',data,function(data){
 			$('.memeComments').append('<div class="singleComment"><span class="commentUser">'+data.name+"</span> "+comment);
+		},true);
+	},
+	notiSeen:function(){
+		requester.post('noti/seen',{},function(data){
+		
 		},true);
 	}
 

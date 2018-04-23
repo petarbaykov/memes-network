@@ -53,8 +53,8 @@
                         <div class="notificationsBody">
                           @foreach(Auth::user()->notifications->sortByDesc('id') as $notification)
                           
-                            @if( $notification->status == 0)
-                            <div class="singleNotification">
+                           
+                            <div class="singleNotification @if($notification->status == 1) notiSeen @endif">
                                 @if($notification->notification_type == "like" )
                                   <div class="justifyFlexCenter justifyLeft">
                                     <img class="notiPic" src=" {{$notification->users[0]->avatarImage()}}"> <div class="notiMsg"><strong>{{$notification->users[0]->name}}</strong> liked <b>your meme</b> <br>{{time_elapsed_string('@'.$notification->time)}}</div>
@@ -69,7 +69,7 @@
                                   </div>
                               @endif
                             </div>
-                           @endif
+                          
                         @endforeach
                         </div>
                       </div>
