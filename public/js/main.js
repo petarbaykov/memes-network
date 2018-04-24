@@ -43,8 +43,33 @@ $(document).ready(function(){
 		
 		
 	});	
+	var timeoutSearch;
+	$('#searchUser').keyup(function(){
+		var data = {
+			keyword:$(this).val()
+		}
+		clearTimeout(timeoutSearch);
+		$('.searchResult').html("");
+		timeoutSearch = setTimeout(function(){
+			requester.get('search/result',data,function(data){
+				$('.searchResult').removeClass('inactive');
+				for(var i in data){
+					$('.searchResult').append('<div>' + data[i].name+"</div>");
+				}
+				
+			});
+		},500);
+		
+		
+	});
 });
-
+var delay = (function(){
+  var timer = 0;
+  return function(callback, ms){
+    clearTimeout (timer);
+    timer = setTimeout(callback, ms);
+  };
+})();
 var pageFunc = {
 
 	uploadAvatar:function(e){

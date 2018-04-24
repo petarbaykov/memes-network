@@ -16,6 +16,14 @@ var Requester = (function(){
 			callback(data);
 		});
     }
+
+    Requester.prototype.get = function(url,data,callback){
+
+        
+        $.get(baseUrl+url,data,function(data){
+			callback(data);
+		});
+    }
     return Requester;
 })();
 var requester = new Requester();

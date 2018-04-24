@@ -36,6 +36,10 @@
                   </li>
                   
             @else
+              <li class="nav-item relative">
+                 <input class="form-control mr-sm-2" type="search" id="searchUser">
+                 <div class="searchResult inactive"></div>
+              </li>
               <li class="nav-item ">
                     
                     <div class="dropdown dropdownMenu">

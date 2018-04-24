@@ -192,6 +192,13 @@ html,body{height:100%;}
   font-weight: bold;
  
 }
+.searchResult{
+  position:absolute;
+  background:#fff;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
 /************** HOME PAGE **************/
 .mainContent {
   width:500px;

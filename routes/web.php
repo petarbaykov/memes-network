@@ -42,6 +42,8 @@ Route::group(['prefix'=>'admin'],function(){
 Route::post('noti/seen','NotificationController@seen');
 
 Route::get('category/{slug}','CategoriesController@get');
+
+Route::get('search/result','SearchController@get');
 $s = 'social.';
 Route::get('/social/redirect/{provider}',   ['as' => $s . 'redirect',   'uses' => 'Auth\LoginController@getSocialRedirect']);
 Route::get('/social/handle/{provider}',     ['as' => $s . 'handle',     'uses' => 'Auth\LoginController@getSocialHandle']);
