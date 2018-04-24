@@ -45,21 +45,22 @@ $(document).ready(function(){
 	});	
 	var timeoutSearch;
 	$('#searchUser').keyup(function(){
-		var data = {
-			keyword:$(this).val()
+		if($(this).val() != ""){
+			var data = {
+				keyword:$(this).val()
+			}
+			clearTimeout(timeoutSearch);
+			$('.searchResult').html("");
+			timeoutSearch = setTimeout(function(){
+				requester.get('search/result',data,function(data){
+					$('.searchResult').removeClass('inactive');
+					for(var i in data){
+						$('.searchResult').append('<div>' + data[i].name+"</div>");
+					}
+					
+				});
+			},500);
 		}
-		clearTimeout(timeoutSearch);
-		$('.searchResult').html("");
-		timeoutSearch = setTimeout(function(){
-			requester.get('search/result',data,function(data){
-				$('.searchResult').removeClass('inactive');
-				for(var i in data){
-					$('.searchResult').append('<div>' + data[i].name+"</div>");
-				}
-				
-			});
-		},500);
-		
 		
 	});
 });

@@ -37,7 +37,7 @@
                   
             @else
               <li class="nav-item relative">
-                 <input class="form-control mr-sm-2" type="search" id="searchUser">
+                 <input class="form-control mr-sm-2" type="search" id="searchUser" placeholder="Search...">
                  <div class="searchResult inactive"></div>
               </li>
               <li class="nav-item ">
@@ -113,7 +113,9 @@
        
        <a class="floating-btn floating-fixed" id="newMeme" href="{{asset('new-meme')}}"><span class="fa fa-plus"></span></a>
     </div>
-
+    <div class="splashScreen">
+        <div class="lds-ripple"><span class="lTitle">Loading...</span><div></div><div></div></div>
+    </div>
     <!-- Scripts -->
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>
@@ -122,10 +124,16 @@
     <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
      <script>
-      var left = $('.mainContent').offset().left + $('.mainContent').outerWidth();
-      $('.fixedWidgets').css({left:left});
-      $('.fixedCategories').css({width:$('.mainContent').css('margin-left')});
-      $('.fixedWidgets').css({width:$('.mainContent').css('margin-left')});
+     if(typeof $('.mainContent').offset() != "undefined"){
+          var left = $('.mainContent').offset().left + $('.mainContent').outerWidth();
+          $('.fixedWidgets').css({left:left});
+          $('.fixedCategories').css({width:$('.mainContent').css('margin-left')});
+          $('.fixedWidgets').css({width:$('.mainContent').css('margin-left')});
+     }
+      window.onload = function(){
+
+        $('.splashScreen').fadeOut();
+      }
      </script>
       
 </body>
