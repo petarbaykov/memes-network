@@ -54,10 +54,13 @@ $(document).ready(function(){
 			timeoutSearch = setTimeout(function(){
 				requester.get('search/result',data,function(data){
 					$('.searchResult').removeClass('inactive');
-					for(var i in data){
-						$('.searchResult').append('<div>' + data[i].name+"</div>");
-					}
 					
+					for(var i in data){
+						$('.searchResult').append('<a class="searchRes" href="'+baseUrl + 'profile/'+data[i].id+'">' + data[i].name+"</a>");
+					}
+					if(data.length == 0){
+						$('.searchResult').append('<div>No result!</div>');
+					}
 				});
 			},500);
 		}

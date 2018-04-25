@@ -260,6 +260,13 @@ html,body{height:100%;}
     position: relative;
     display: inline-block;
 }
+.searchRes{
+  display: block;
+}
+.searchRes:hover{
+  text-decoration: none;
+  background:#eee;
+}
 /************** HOME PAGE **************/
 .mainContent {
   width:500px;
