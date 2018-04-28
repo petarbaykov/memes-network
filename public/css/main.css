@@ -697,9 +697,42 @@ textarea{
 .newMemeTitle{
   padding-top:50px;
 }
+
+.mobileNoti{
+  display: none;
+}
 /************ MEDIA QUERIES *********************/
 @media screen and (max-width:780px){
   .mainContent{
     width:100%;
   }
+  .fixedCategories{
+    position: static;
+    width: 100% !important;
+  }
+  .fixedWidgets{
+    display: none;
+  }
+  .floating-fixed{
+    bottom:60px;
+  }
+  .memeSteps .col-6{
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+  }
+  .profileMeme{
+    width:100%;
+    margin:10px 15px;
+  }
+  .mobileNoti{
+    display: block;
+    position: absolute;
+    right: 90px;
+    top:7px;
+  }
+  .mobileNoti li{list-style: none;}
+  .notiicationsDropDown{min-width: 400%;}
+  .panel{width:100%;padding:10px;}
+  .loginBtn{border-radius: 0;box-shadow: none;margin-top:10px;}
 }

@@ -25,9 +25,11 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top ">
             <div class="container">
           <a class="navbar-brand" href="{{asset('/')}}">Memes Share</a>
+          <div class="mobileNoti"></div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+          
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav  ml-auto">
               @guest
@@ -40,7 +42,7 @@
                  <input class="form-control mr-sm-2" type="search" id="searchUser" placeholder="Search...">
                  <div class="searchResult inactive"></div>
               </li>
-              <li class="nav-item ">
+              <li class="nav-item notis">
                     
                     <div class="dropdown dropdownMenu">
                       <a class="nav-link relative" href="#" id="notifications">
@@ -110,8 +112,9 @@
         @endif
         
         @yield('content')
-       
+       @if(Auth::check())
        <a class="floating-btn floating-fixed" id="newMeme" href="{{asset('new-meme')}}"><span class="fa fa-plus"></span></a>
+       @endif
     </div>
     <div class="splashScreen">
         <div class="lds-ripple"><span class="lTitle">Loading...</span><div></div><div></div></div>

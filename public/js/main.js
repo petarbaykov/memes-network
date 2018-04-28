@@ -66,6 +66,11 @@ $(document).ready(function(){
 		}
 		
 	});
+
+	if($(window).width() < 780){
+
+		$('.notis').appendTo('.mobileNoti');
+	}
 });
 var delay = (function(){
   var timer = 0;
